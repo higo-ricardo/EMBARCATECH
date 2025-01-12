@@ -12,9 +12,10 @@
 <p align="justify">A escrituração do firmware pode ser feita em linguagem C, C/C++ e MicroPython, cada qual com suas particularidades quanto a configuração do ambiente de desenvolvimento já que não há um ambiente proprietário. Cumpre destacar que configurar um ambiente de desenvolvimento no Visual Studio Code IDE no sistema Windows é uma tarefa desafiadora, pois exige a instalação do VS code, em seguida do compilador Arche32, depois do pacote de desenvolvimento Pico SDK e, por fim, a configuração da IDE para linguagem C com a instalação das  extensões C/C++, cMakeTools, etc.</p>
 </div>
 
+Se quiser fazzer isso de maneira rápida e menos complicada, basta clicar no link e seguir o passo a passo descrito no artigo <a href="https://www.raspberrypi.com/news/raspberry-pi-pico-windows-installer/">Install Pico SDK on Windows<a>.
 
  ### SIGA-ME NAS REDES SOCIAIS
-       
+
  <div>
   <a href="https://www.linkedin.com/in/higomelo/">
      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" align="center" heigth="60" width="60"/>
