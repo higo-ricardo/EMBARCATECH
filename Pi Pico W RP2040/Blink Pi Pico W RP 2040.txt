@@ -1,0 +1,24 @@
+/****************************************************
+********* Blink na placa Pi Pico W RP2040************
+*************Autor: Higo Ricardo*********************
+*************Discord: higomelo************************
+*************GitHub: higo-ricardo*********************
+*************Data: 11/01/2025************************
+*****************************************************/
+
+#include <stdio.h>
+#include "pico/stdlib.h"
+#include "pico/cyw43_arch.h"
+
+int main() {
+  stdio_init_all(); //Inicializa a placa Pi Pico W
+  cyw43_arch_init(); //Inicializa a placa WiFi
+
+  while (true) {
+    // Interface do LED da placa WiFi é CYW43_WL_GPIO_LED_PIN 
+    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, true); //Liga o LED
+    sleep_ms(500);
+    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, false);//Desliga o LED
+    sleep_ms(500);
+  }
+}
