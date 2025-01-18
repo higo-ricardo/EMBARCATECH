@@ -1,12 +1,16 @@
 # LINGUAGEM C
-~~~C
-Quer aprender a programar em linguagem de programação C? 
-~~~
-Aqui tem coleção de livros para iniciantes quanto para desenvolvedores mais experientes que desejam aprimorar seus conhecimentos sobre linguagem de programação C.
 
-A ubiquidade do C na computação é um testemunho de sua adaptabilidade e relevância contínua. Seja na criação de sistemas operacionais, jogos imersivos ou  até computação embarcada.
+
+```diff
+- Quer aprender a programar em linguagem de programação C? 
++ Aqui tem coleção de livros para iniciantes e desenvolvedores mais experientes que desejam aprimorar seus conhecimentos.
+```
+
 
 ---
+
+Na computação, a ubiquidade da linguagem C é a prova de sua versatibilidade e relevância contínua. Ela está presentes em sistemas operacionais, jogos imersivos até computação embarcada.
+
 - **Como Programar em C**
   - Um guia completo para aprender a programar em C. Este livro cobre desde os conceitos básicos até os tópicos mais avançados.
   
