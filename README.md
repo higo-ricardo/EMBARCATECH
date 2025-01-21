@@ -33,9 +33,9 @@ Se quiser fazzer isso de maneira rápida e menos complicada, basta clicar no lin
 
 ---
 ## Connect Me
- <div>
-  <a href="https://www.linkedin.com/in/higomelo/"> Linkedin </a>
-  
----
+ <div align="right">
+  <a href="https://www.linkedin.com/in/higomelo/"> <img src="https://github.com/higo-ricardo/EMBARCATECH/blob/main/images/linkdein.png" width= "60" height= "60"> </a>
+ </div> 
+--- 
 Thanks for visiting my profile, and happy coding!
 
