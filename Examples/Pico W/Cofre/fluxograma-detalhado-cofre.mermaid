@@ -1,0 +1,64 @@
+flowchart TD
+    %% Inicialização do Hardware
+    START([Início]) --> CONFIG_LED[Configurar GP28 e GP27\npara LEDs Verde e Vermelho]
+    CONFIG_LED --> TEST_LED[Teste dos LEDs\nAcender por 1s]
+    TEST_LED --> CONFIG_KEY1[Configurar GP6-GP9\npara Keypad]
+    CONFIG_KEY1 --> CONFIG_KEY2[Configurar GP10-GP13\npara Keypad]
+    CONFIG_KEY2 --> TEST_KEY[Teste do Keypad]
+    TEST_KEY --> CONFIG_UART[Configurar UART]
+    CONFIG_UART --> MSG_INIT[Exibir Mensagem\nde Inicialização]
+    
+    %% Estado Inicial
+    MSG_INIT --> CAPTURE[Estado:\nCAPTURA DE SENHA]
+    
+    %% Processo de Captura
+    CAPTURE --> WAIT_KEY[Aguardar Tecla]
+    WAIT_KEY --> DIGIT{Tecla\nPressionada?}
+    
+    DIGIT -->|Sim| STORE[Armazenar Dígito\nExibir no Console]
+    STORE --> COUNT{4 Dígitos\nInseridos?}
+    COUNT -->|Não| WAIT_KEY
+    
+    %% Validação
+    COUNT -->|Sim| VALIDATE{Senha\nCorreta?}
+    
+    %% Senha Correta
+    VALIDATE -->|Sim| MSG_OK[Exibir: Senha Correta]
+    MSG_OK --> OPEN[Estado: COFRE ABERTO\nContador = 1]
+    OPEN --> LED_G[Acender LED Verde]
+    LED_G --> WAIT_C{Tecla C\nPressionada?}
+    WAIT_C -->|Não| WAIT_C
+    WAIT_C -->|Sim| CLOSE[Fechar Cofre]
+    CLOSE --> LED_OFF[Apagar LED Verde]
+    LED_OFF --> CAPTURE
+    
+    %% Senha Incorreta
+    VALIDATE -->|Não| MSG_NOK[Exibir: Senha Incorreta]
+    MSG_NOK --> INC_TENT[Incrementar Tentativa]
+    INC_TENT --> LED_R_TEMP[Acender LED Vermelho\npor 0.5s]
+    LED_R_TEMP --> CHECK_TENT{Tentativas < 3?}
+    
+    %% Retorno para Captura
+    CHECK_TENT -->|Sim| CAPTURE
+    
+    %% Sistema Bloqueado
+    CHECK_TENT -->|Não| BLOCK_MSG1[Exibir: NÚMERO DE\nTENTATIVAS EXCEDIDO!]
+    BLOCK_MSG1 --> BLOCK_MSG2[Exibir: SISTEMA\nESTÁ BLOQUEADO!]
+    BLOCK_MSG2 --> BLOCK_LED[Acender LED Vermelho]
+    BLOCK_LED --> BLOCK_WAIT[Aguardar 5 segundos]
+    BLOCK_WAIT --> BLOCK_LED_OFF[Apagar LED Vermelho]
+    BLOCK_LED_OFF --> RESET_TENT[Resetar Contador\nde Tentativas]
+    RESET_TENT --> CAPTURE
+    
+    %% Estilização
+    classDef init fill:#90EE90,stroke:#333,stroke-width:2px;
+    classDef process fill:#FFB6C1,stroke:#333,stroke-width:2px;
+    classDef state fill:#87CEEB,stroke:#333,stroke-width:2px;
+    classDef decision fill:#DDA0DD,stroke:#333,stroke-width:2px;
+    classDef block fill:#FF6B6B,stroke:#333,stroke-width:2px;
+    
+    class START init;
+    class CONFIG_LED,CONFIG_KEY1,CONFIG_KEY2,CONFIG_UART,TEST_LED,TEST_KEY init;
+    class CAPTURE,OPEN state;
+    class VALIDATE,COUNT,DIGIT,WAIT_C,CHECK_TENT decision;
+    class BLOCK_MSG1,BLOCK_MSG2,BLOCK_LED,BLOCK_WAIT,BLOCK_LED_OFF block;
